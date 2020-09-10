@@ -18,7 +18,7 @@ class PessoaController {
         }
     }
 
-    static async listaPessoas(req, res) {
+    static async listaPessoasAtivas(req, res) {
         try {
             const allPessoas = await database.Pessoas.findAll()
             return res.status(200).json(allPessoas)
@@ -26,7 +26,14 @@ class PessoaController {
             return res.status(500).json(error.message)
         }
     }
-
+    static async listaPessoas(req, res) {
+        try {
+            const allPessoas = await database.Pessoas.scope('todos').findAll()
+            return res.status(200).json(allPessoas)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
 
     static async salvarPessoa(req, res) {
         console.log("salvando pessoa")
@@ -35,6 +42,16 @@ class PessoaController {
             const novaPessoa = await database.Pessoas.create(pessoa)
             return res.status(201).json({ "msg": "pessoa criada com sucesso" })
         } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    static async restauraPessoa(req, res){
+        const { id } = req.params
+        try{
+            await database.Pessoas.restore({ where: {id: Number(id) }})
+            return res.status(200).json({"msg": "Aluno restaurado com sucesso"})
+        }catch(error){
             return res.status(500).json(error.message)
         }
     }

@@ -4,11 +4,15 @@ const PessoaController = require("../controllers/PessoaController")
 const router = Router()
 router.patch('/pessoas/:id', PessoaController.atualizaPessoa)
 
-router.get("/pessoas", PessoaController.listaPessoas)
+router.get("/pessoas", PessoaController.listaPessoasAtivas)
+
+router.get("/pessoas/todos", PessoaController.listaPessoas)
 
 router.get('/pessoas/:id', PessoaController.pegaPessoa)
 
 router.post('/pessoas', PessoaController.salvarPessoa)
+
+router.post('/pessoas/:id', PessoaController.restauraPessoa)
 
 router.delete('/pessoas/:id', PessoaController.deletaPessoa)
 
