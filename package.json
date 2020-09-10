@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/RafaelTuccio/Escola-ingles#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
