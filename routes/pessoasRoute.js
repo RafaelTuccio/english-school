@@ -12,4 +12,12 @@ router.post('/pessoas', PessoaController.salvarPessoa)
 
 router.delete('/pessoas/:id', PessoaController.deletaPessoa)
 
+router.get('/pessoas/:estudante_Id/matricula/:matricula_Id', PessoaController.pegaMatricula)
+
+router.post('/pessoas/:estudante_id/matricula/', PessoaController.salvarMatricula)
+
+router.patch('/pessoas/:estudante_Id/matricula/:matricula_Id', PessoaController.atualizaMatricula)
+
+router.delete('/pessoas/:estudante_Id/matricula/:matricula_Id', PessoaController.deletaMatricula)
+
 module.exports = router
